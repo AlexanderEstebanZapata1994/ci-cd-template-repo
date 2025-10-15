@@ -1,0 +1,46 @@
+name: Validate README
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'README.md'          # solo se ejecuta si cambia el README
+  push:
+    branches: [ main ]
+    paths:
+      - 'README.md'          # también al hacer merge en main
+
+jobs:
+  check-readme:
+    name: Lint and check README
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli2
+
+      - name: Run Markdown Linter
+        run: markdownlint-cli2 README.md
+
+      - name: Count words in README
+        run: |
+          echo "Word count:"
+          wc -w README.md
+
+      - name: Check for TODOs
+        run: |
+          if grep -q "TODO" README.md; then
+            echo "❌ Found TODOs in README.md"
+            exit 1
+          else
+            echo "✅ No TODOs found in README.md"
+          fi
+
