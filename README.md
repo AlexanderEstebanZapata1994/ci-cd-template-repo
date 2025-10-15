@@ -9,4 +9,3 @@ This repository contains basic examples of GitFlow with GitHub
 - Validation of files format
 
 Gitflow changes made by AEZ
-
