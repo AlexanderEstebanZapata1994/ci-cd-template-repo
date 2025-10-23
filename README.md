@@ -11,3 +11,5 @@ This repository contains basic examples of GitFlow with GitHub
 Gitflow changes made by AEZ
 
 Testing pre-commit
+
+testing pre-commit installed
