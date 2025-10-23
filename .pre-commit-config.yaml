@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        description: "Elimina espacios en blanco al final de las líneas"
+      - id: end-of-file-fixer
+        description: "Asegura que todos los archivos terminen con una línea en blanco"
+      - id: check-yaml
+        description: "Valida archivos YAML"
+      - id: check-added-large-files
+        description: "Evita subir archivos grandes (>500KB)"
+      - id: check-merge-conflict
+        description: "Detecta marcadores de conflicto de merge"
